@@ -1,17 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React,{useEffect, useState } from 'react'
+import {useDispatch} from 'react-redux'
 import './App.css'
+import authService from './appwrite/auth'
 
 function App() {
-  console.log(import.meta.env.VITE_APPWRITE_URL);
-  const [count, setCount] = useState(0)
+  
+  const [loading ,setloading]=useState(true)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    authService.getCurrentUser()
+    .then((userData)=>{
+      if (userData)
+      {
+        dispatch(login({userData}))
+      }
+      else
+      {
+        dispatch(logout())
+      }
+    })
+    .finally(()=>setloading(false))
+    },[])
 
-  return (
-    <>
-     <h1>hello</h1>
-    </>
-  )
+    return !loading ?(<div>
+      
+    </div>): null
+  
+  
 }
 
 export default App
