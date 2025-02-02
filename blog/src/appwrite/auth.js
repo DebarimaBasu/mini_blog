@@ -9,7 +9,7 @@ export class AuthService{
         this.client
         .setEndpoint(appwriteUrl)
         .setProject(appwriteProjectId);
-        this.account=new Account(client);
+        this.account=new Account(this.client);
     }
 
 
@@ -54,7 +54,7 @@ try{
     return await this.account.deleteSessions();
 }
 catch{
-    throw error
+    console.log("Appwrite service::logOut::error",error);
 }
 }
 }
