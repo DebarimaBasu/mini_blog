@@ -3,12 +3,14 @@ import { Account, Client, Databases, ID } from "appwrite";
 
 export class AuthService{
     client=new Client;//when object will be created the client will also be created
+    //const client = new Client();
+    //client.setProject('679db8ef002988a7fe70');
     account;
     constructor()
     {
         this.client
-        .setEndpoint(appwriteUrl)
-        .setProject(appwriteProjectId);
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId);
         this.account=new Account(this.client);
     }
 
@@ -37,17 +39,16 @@ async logIn({email,password})
     { throw error
     }
 }
-async getCurrentUser()
-{
-    try{
-        return await this.account.get();//returning current state of user
+async getCurrentUser() {
+    try {
+        return await this.account.get();
+    } catch (error) {
+        console.log("Appwrite serive :: getCurrentUser :: error", error);
     }
-    catch(error)
-    {
-        console.log("Appwrite service::getCurrentUser::error",error);
-    }
-    return null;//if error it will return null
+
+    return null;
 }
+
 async logOut()
 {
 try{
