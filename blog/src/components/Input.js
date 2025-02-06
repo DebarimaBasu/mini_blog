@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useId } from 'react'
 
 const Input =React.forwardRef (
     function Input({
@@ -10,18 +10,20 @@ const Input =React.forwardRef (
         ...props
     },ref)
     {
-        return <h1>
-           <div>
-                <label>{label}</label>
+        //{/*useId is a custom hook that generates a unique id for the input field */}
+        const id=useId() 
+        return (
+            <div className='w-full'>
+               {label && <label className=' inline-block mb-1 pl-1'
+               htmlFor={id}>
+                {label}</label>}
                 <input
                 type={type}
-                placeholder={placeholder}
-                className='border border-gray-400 px-4 py-2 rounded-lg w-full'
+                className={`${className}`}  //{/*for whatever user has started */}
                 ref={ref}
-                {...props}
-                />
-           </div>
-        </h1>
+                id={id}/> 
+                </div>  
+        )
     }
 
 ) 
