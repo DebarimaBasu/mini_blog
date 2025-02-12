@@ -10,6 +10,8 @@ import Home from './pages/Home.jsx'
 import Signup from './pages/Signup.jsx'
 import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
+import AllPosts from './pages/AllPosts.jsx'
+import Post from "./pages/Post";
 const router=createBrowserRouter([{
   path:'/',
   element:<App/>,

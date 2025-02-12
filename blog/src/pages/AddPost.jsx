@@ -1,12 +1,12 @@
 import React from 'react'
-import { container,PostForm } from '../components'
+import { Container,PostForm } from '../components'
 
 const AddPost = () => {
   return (
     <div>
-        <container>
+        <Container>
             <PostForm />
-            </container>
+            </Container>
       
     </div>
   )
