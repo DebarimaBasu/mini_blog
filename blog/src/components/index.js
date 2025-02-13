@@ -24,7 +24,8 @@ export {
     Button,
     PostForm,
     PostCard,
+    Input,
     AuthLayout, 
-   Input,
+    
     Select,
 }

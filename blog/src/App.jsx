@@ -13,16 +13,11 @@ function App() {
   useEffect(() => {
     authService.getCurrentUser()
     .then((userData) => {
-      console.log(`userdata:${userData}`)
       if (userData) {
         dispatch(login({userData}))
       } else {
         dispatch(logout())
       }
-    })
-    .catch(err=>{
-      console.log("failed to get current user data",err)
-      dispatch(logout())
     })
     .finally(() => setLoading(false))
   }, [])
@@ -32,7 +27,7 @@ function App() {
       <div className='w-full block'>
         <Header />
         <main>
-        TODO:  {/*<Outlet />*/}
+        TODO:  <Outlet />
         </main>
         <Footer />
       </div>
